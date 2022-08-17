@@ -1,10 +1,14 @@
-const { Client, Intents } = require("discord.js");
-const { token } = require("./config/config.json");
+const { Client, GatewayIntentBits } = require("discord.js");
+const env = require("dotenv");
 
-const client = new Client({
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
-});
+env.config()
+
+console.log(process.env.TOKEN)
+
+const client = new Client({ intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages
+] });
 
 
-
-client.login(options.token || token);
+client.login(process.env.TOKEN);
