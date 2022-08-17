@@ -1,5 +1,5 @@
 # shrine
-A general purpose discord bot, specifically intended for a art-related communities.
+A general purpose discord bot, specifically intended for art-related communities.
 
 ### Usage / Installation
 
