@@ -5,9 +5,10 @@ A general purpose discord bot, specifically intended for art-related communities
 
 ```bash
 $ git clone https://github.com/Artist-Tavern-Community/shrine
-$ cd shrine-main
+$ cd shrine
+$ # make a `.env` file with your `TOKEN` ideally in that same capital casing
 $ yarn install
-$ node ./index.js
+$ yarn run start
 
 ### Contribution
 
