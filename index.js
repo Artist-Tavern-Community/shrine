@@ -10,6 +10,7 @@ const client = new Client({ intents: [
     GatewayIntentBits.GuildMessages
 ] });
 
+// sends a stdout related to the status of the bot
 client.once("ready", (bot) => {
     console.log("Status: Successfully ran!")
     console.log(`Running on: ${bot.user.username}`)
@@ -31,6 +32,7 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
+// gets all the commands from the ./commands directory
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
