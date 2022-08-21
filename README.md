@@ -14,3 +14,7 @@ $ yarn run start
 ### Contribution
 
 Any contribution is more than welcome. Just make sure to open a issue for major changes you think would be beneficial.
+
+### License
+
+[MIT](https://github.com/Artist-Tavern-Community/shrine/blob/main/LICENSE)
