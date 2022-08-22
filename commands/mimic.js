@@ -19,20 +19,23 @@ function saveMimic(name, msg) {
 	})
 }
 
+const newMimicEmbed = new SlashCommandBuilder()
+.setName('mimic')
+.setDescription('Setup a message for use in a announcement.')
+.addStringOption(option =>
+	option.setName('name')
+		.setDescription('The name of said message you want to save.')
+		.setRequired(true))
+.addStringOption(option =>
+	option.setName('msg')
+		.setDescription('The message you want to save.')
+		.setRequired(true))
+
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('mimic')
-		.setDescription('Setup a message for use in a announcement.')
-		.addStringOption(option =>
-			option.setName('name')
-				.setDescription('The name of said message you want to save.')
-				.setRequired(true))
-		.addStringOption(option =>
-			option.setName('msg')
-				.setDescription('The message you want to save.')
-				.setRequired(true)),
+	data: newMimicEmbed,
 	async execute(interaction) {
 		try {
+			// prevent non-announcers from using it
 			if (interaction.member.guild.ownerId !== interaction.member.id || interaction.member.roles.cache.some(role => role.name === process.env.ANNOUNCER_ROLE)) {
 				throw Error(`You don't have high enough permissions to use this command. You either have to be the owner or have a \`${process.env.ANNOUNCER_ROLE}\` role.`)
 			}
