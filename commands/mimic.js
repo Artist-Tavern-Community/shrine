@@ -1,4 +1,21 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const fs = require('node:fs');
+const path = require('node:path')
+const data = require("../data.json");
+
+const mimiced = data.mimiced;
+
+function saveMimic(name, msg) {
+	// prevent the same entry
+	if (data.mimiced.hasOwnProperty(name)) {
+		throw Error("Error: There is already one with the exact same name. Try using a different one.")
+	}
+	let new_copy = data
+	new_copy.mimiced[name] = msg 
+	fs.writeFile(path.join(__dirname, path.normalize("../data.json")), JSON.stringify(new_copy), (res) => {
+		console.log(res)
+	})
+}
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -22,6 +39,7 @@ module.exports = {
 					{ name: `Shrine > Mimic -> ${name}`, value: msg },
 				)
 				.setTimestamp();
+			saveMimic(name, msg)
 			await interaction.reply({ embeds: [ mimicEmbed ] });
 		}
 		catch (err) {
