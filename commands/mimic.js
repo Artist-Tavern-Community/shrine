@@ -1,9 +1,11 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path')
-const data = require("../data.json");
+const env = require("dotenv")
 
-const mimiced = data.mimiced;
+env.config()
+
+const data = require("../data.json");
 
 function saveMimic(name, msg) {
 	// prevent the same entry
@@ -13,7 +15,7 @@ function saveMimic(name, msg) {
 	let new_copy = data
 	new_copy.mimiced[name] = msg 
 	fs.writeFile(path.join(__dirname, path.normalize("../data.json")), JSON.stringify(new_copy), (res) => {
-		console.log(res)
+		return res;
 	})
 }
 
@@ -31,6 +33,9 @@ module.exports = {
 				.setRequired(true)),
 	async execute(interaction) {
 		try {
+			if (interaction.member.guild.ownerId !== interaction.member.id || interaction.member.roles.cache.some(role => role.name === process.env.ANNOUNCER_ROLE)) {
+				throw Error(`You don't have high enough permissions to use this command. You either have to be the owner or have a \`${process.env.ANNOUNCER_ROLE}\` role.`)
+			}
 			const name = interaction.options.getString("name")
 			const msg = interaction.options.getString("msg")
 			const mimicEmbed = new EmbedBuilder()
