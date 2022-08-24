@@ -15,12 +15,12 @@ function wipeMimics(name, msg) {
 	})
 }
 
-const newWipeMimicsEmbed = new SlashCommandBuilder()
+const wipeMimicsCommand = new SlashCommandBuilder()
 .setName('wipemimics')
 .setDescription('Remove all mimics currently saved.')
 
 module.exports = {
-	data: newWipeMimicsEmbed,
+	data: wipeMimicsCommand,
 	async execute(interaction) {
 		try {
 			// prevent non-announcers from using it

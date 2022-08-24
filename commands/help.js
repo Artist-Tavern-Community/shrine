@@ -1,9 +1,11 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
+const helpCommand = new SlashCommandBuilder()
+.setName('help')
+.setDescription('View help information.')
+
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('help')
-		.setDescription('View help information.'),
+	data: helpCommand,
 	async execute(interaction) {
 		try {
 			const helpEmbed = new EmbedBuilder()

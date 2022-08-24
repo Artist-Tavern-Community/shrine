@@ -19,7 +19,7 @@ function saveMimic(name, msg) {
 	})
 }
 
-const newMimicEmbed = new SlashCommandBuilder()
+const mimicCommand = new SlashCommandBuilder()
 .setName('mimic')
 .setDescription('Setup a message for use in a announcement.')
 .addStringOption(option =>
@@ -32,7 +32,7 @@ const newMimicEmbed = new SlashCommandBuilder()
 		.setRequired(true))
 
 module.exports = {
-	data: newMimicEmbed,
+	data: mimicCommand,
 	async execute(interaction) {
 		try {
 			// prevent non-announcers from using it
