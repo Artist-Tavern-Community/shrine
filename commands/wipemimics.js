@@ -27,8 +27,6 @@ module.exports = {
 			if (interaction.member.guild.ownerId !== interaction.member.id || interaction.member.roles.cache.some(role => role.name === process.env.ANNOUNCER_ROLE)) {
 				throw Error(`You don't have high enough permissions to use this command. You either have to be the owner or have a \`${process.env.ANNOUNCER_ROLE}\` role.`)
 			}
-			const name = interaction.options.getString("name")
-			const msg = interaction.options.getString("msg")
 			const mimicClearEmbed = new EmbedBuilder()
 				.setColor('#ffffff')
 				.addFields(
