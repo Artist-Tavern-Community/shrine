@@ -31,7 +31,7 @@ module.exports = {
 			await interaction.reply({ embeds: [ clearEmbed ] });
 			setTimeout(async () => {
 				await interaction.deleteReply()
-			}, 1000)
+			}, 2000)
 		}
 		catch (err) {
 			const errorEmbed = new EmbedBuilder()
