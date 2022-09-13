@@ -24,7 +24,7 @@ module.exports = {
 	async execute(interaction) {
 		try {
 			// prevent non-announcers from using it
-			if (interaction.member.guild.ownerId !== interaction.member.id || interaction.member.roles.cache.some(role => role.name === process.env.ANNOUNCER_ROLE)) {
+			if (interaction.member.guild.ownerId !== interaction.member.id && !interaction.member.roles.cache.some(role => role.name === process.env.ANNOUNCER_ROLE)) {
 				throw Error(`You don't have high enough permissions to use this command. You either have to be the owner or have a \`${process.env.ANNOUNCER_ROLE}\` role.`)
 			}
 			const mimicClearEmbed = new EmbedBuilder()

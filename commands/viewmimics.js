@@ -15,8 +15,12 @@ module.exports = {
 	data: viewMimicsCommand,
 	async execute(interaction) {
 		try {
+			console.log(
+
+				!interaction.member.roles.cache.some(role => role.name === process.env.ANNOUNCER_ROLE)
+			)
 			// prevent non-announcers from using it
-			if (interaction.member.guild.ownerId !== interaction.member.id || interaction.member.roles.cache.some(role => role.name === process.env.ANNOUNCER_ROLE)) {
+			if (interaction.member.guild.ownerId !== interaction.member.id && !interaction.member.roles.cache.some(role => role.name === process.env.ANNOUNCER_ROLE)) {
 				throw Error(`You don't have high enough permissions to use this command. You either have to be the owner or have a \`${process.env.ANNOUNCER_ROLE}\` role.`)
 			}
 			let count = 1;
