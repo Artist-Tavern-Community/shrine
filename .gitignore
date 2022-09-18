@@ -351,3 +351,4 @@ MigrationBackup/
 
 # Ignore the .env file with secret key
 .env
+backup.env
