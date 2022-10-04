@@ -54,6 +54,7 @@ module.exports = {
 				.addFields(
 					{ name: `Shrine > Mimic -> ${name}`, value: msg },
 				)
+				.setFooter({text: 'Warning: Due to discord limitations video urls can only be shown by themselves and only some urls are compatible with discord.'})
 				.setImage(img)
 				.setTimestamp();
 			saveMimic(name, msg, img, vid)
