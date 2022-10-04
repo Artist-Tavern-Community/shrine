@@ -31,7 +31,7 @@ module.exports = {
 					{ name: `Shrine -> ${mimic}`, value: data.mimiced[mimic].name },
 				)
 				.setImage(data.mimiced[mimic].img)
-			await interaction.reply({ embeds: [ mimicEmbed ] });
+			await interaction.reply({embeds: data.mimiced[mimic].vid ? null : [ mimicEmbed ], content: data.mimiced[mimic].vid});
 		}
 		catch (err) {
 			const errorEmbed = new EmbedBuilder()

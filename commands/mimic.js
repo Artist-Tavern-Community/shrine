@@ -7,13 +7,13 @@ env.config()
 
 const data = require("../data.json");
 
-function saveMimic(name, msg, img) {
+function saveMimic(name, msg, img, vid) {
 	// prevent the same entry
 	if (data.mimiced.hasOwnProperty(name)) {
 		throw Error("Error: There is already one with the exact same name. Try using a different one.")
 	}
 	let new_copy = data
-	new_copy.mimiced[name] = {name: msg, img: img || ""} 
+	new_copy.mimiced[name] = {name: msg, img: img || "", vid: vid || ""} 
 	fs.writeFile(path.join(__dirname, path.normalize("../data.json")), JSON.stringify(new_copy), (res) => {
 		return res;
 	})
@@ -33,6 +33,9 @@ const mimicCommand = new SlashCommandBuilder()
 	.addStringOption(option =>
 		option.setName('img')
 			.setDescription('Any image url you\'d like to add.'))
+	.addStringOption(option => 
+		option.setName('vid')
+			.setDescription('Any video url you\'d like to add.'))
 
 module.exports = {
 	data: mimicCommand,
@@ -45,6 +48,7 @@ module.exports = {
 			const name = interaction.options.getString("name")
 			const msg = interaction.options.getString("msg")
 			const img = interaction.options.getString("img")
+			const vid = interaction.options.getString('vid')
 			const mimicEmbed = new EmbedBuilder()
 				.setColor('#ffffff')
 				.addFields(
@@ -52,7 +56,7 @@ module.exports = {
 				)
 				.setImage(img)
 				.setTimestamp();
-			saveMimic(name, msg, img)
+			saveMimic(name, msg, img, vid)
 			await interaction.reply({ embeds: [ mimicEmbed ] });
 		}
 		catch (err) {
