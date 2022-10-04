@@ -30,7 +30,9 @@ module.exports = {
 				.addFields(
 					{ name: `Shrine -> ${mimic}`, value: data.mimiced[mimic].name },
 				)
-				.setImage(data.mimiced[mimic].img)
+			if (data.mimiced[mimic].img) {
+				mimicEmbed.setImage(data.mimiced[mimic].img)
+			}
 			await interaction.reply({embeds: data.mimiced[mimic].vid ? null : [ mimicEmbed ], content: data.mimiced[mimic].vid});
 		}
 		catch (err) {
