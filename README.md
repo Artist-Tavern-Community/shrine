@@ -11,6 +11,18 @@ $ yarn install # note: if you don't have yarn search how to install yarn
 $ yarn deploy:commands
 $ yarn run start
 ```
+
+### Command Categories
+
+Currently most commands fall under these categories:
+```
+general
+utilities
+help
+administration
+```
+
+
 ### Contribution
 
 Any contribution is more than welcome. Just make sure to open a issue for major changes you think would be beneficial.
