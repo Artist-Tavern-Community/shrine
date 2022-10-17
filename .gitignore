@@ -352,3 +352,7 @@ MigrationBackup/
 # Ignore the .env file with secret key
 .env
 backup.env
+env.backup
+
+# Ignore /dist given it may be used in the future of this project
+dist/
