@@ -44,4 +44,4 @@ for (const file of commandFiles) {
 }
 
 
-client.login(process.env.TOKEN); // Technically could just place a token inside instead of making a env
+client.login(process.env.TOKEN); // Technically could just place a token inside instead of making a env, though its significantly better to use the .env.template for long term usage
